@@ -44,6 +44,31 @@ export default function FamilyTree() {
   const [selectedPerson, setSelectedPerson] = useState(null);
   const [isJsonModalOpen, setIsJsonModalOpen] = useState(false);
 
+  // Tema Gelap (Dark Mode)
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    try {
+      const saved = localStorage.getItem('theme');
+      if (saved) return saved === 'dark';
+      return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    } catch {
+      return false;
+    }
+  });
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+      try { localStorage.setItem('theme', 'dark'); } catch {}
+    } else {
+      document.documentElement.classList.remove('dark');
+      try { localStorage.setItem('theme', 'light'); } catch {}
+    }
+  }, [isDarkMode]);
+
+  const toggleDarkMode = useCallback(() => {
+    setIsDarkMode((prev) => !prev);
+  }, []);
+
   const reactFlowWrapper = useRef(null);
   const { fitView, setCenter, zoomIn, zoomOut } = useReactFlow();
 
@@ -165,8 +190,30 @@ export default function FamilyTree() {
       });
   }, []);
 
+  const handleSelectPersonFromSearch = useCallback((person) => {
+    if (!person) return;
+    if (person.branch) {
+      setActiveBranch(person.branch);
+    } else if (person.root) {
+      setActiveBranch('khairi_buang');
+    } else if (person.id === 'muchsin' || person.id === 'maryanah') {
+      setActiveBranch('Muchsin-Maryanah');
+    }
+    setSelectedPerson(person);
+
+    setTimeout(() => {
+      const targetNode = nodes.find((n) => n.id === person.id);
+      if (targetNode) {
+        setCenter(targetNode.position.x + 120, targetNode.position.y + 70, {
+          zoom: 1.1,
+          duration: 600,
+        });
+      }
+    }, 250);
+  }, [nodes, setCenter]);
+
   return (
-    <div className="flex flex-col w-full h-screen bg-slate-50 overflow-hidden select-none">
+    <div className="flex flex-col w-full h-screen bg-slate-50 dark:bg-slate-950 overflow-hidden select-none transition-colors">
       {/* Header Utama */}
       <Header
         searchQuery={searchQuery}
@@ -178,6 +225,9 @@ export default function FamilyTree() {
         onResetView={handleResetView}
         onOpenJsonModal={() => setIsJsonModalOpen(true)}
         onExportImage={handleExportImage}
+        onSelectPerson={handleSelectPersonFromSearch}
+        isDarkMode={isDarkMode}
+        toggleDarkMode={toggleDarkMode}
       />
 
       {/* Bilah Pilihan Keluarga di Atas (Sangat memudahkan orang tua) */}
@@ -190,7 +240,7 @@ export default function FamilyTree() {
 
       {/* Konten Utama */}
       {viewMode === 'tree' ? (
-        <div className="relative flex-1 w-full h-full bg-slate-50" ref={reactFlowWrapper}>
+        <div className="relative flex-1 w-full h-full bg-slate-50 dark:bg-slate-950" ref={reactFlowWrapper}>
           <ReactFlow
             nodes={nodes}
             edges={edges}
@@ -210,20 +260,20 @@ export default function FamilyTree() {
             proOptions={{ hideAttribution: true }}
             className="touch-manipulation"
           >
-            <Background color="#cbd5e1" gap={24} size={1.2} />
+            <Background color={isDarkMode ? '#334155' : '#cbd5e1'} gap={24} size={1.2} />
 
             {/* Desktop Controls */}
             <Controls position="bottom-right" showInteractive={false} className="hidden sm:block" />
 
             {/* Panduan Ramah Orang Tua di pojok atas */}
             <Panel position="top-left" className="m-3 pointer-events-none hidden sm:block">
-              <div className="p-3 rounded-xl bg-white border-2 border-emerald-300 text-xs text-slate-800 max-w-xs space-y-1 shadow-md">
-                <div className="font-black text-emerald-800 flex items-center gap-1.5">
-                  <Info className="w-4 h-4 text-emerald-600" />
+              <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border-2 border-emerald-300 dark:border-emerald-700 text-xs text-slate-800 dark:text-slate-200 max-w-xs space-y-1 shadow-md">
+                <div className="font-black text-emerald-800 dark:text-emerald-400 flex items-center gap-1.5">
+                  <Info className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                   <span>Cara Mudah Melihat:</span>
                 </div>
-                <p className="text-[11px] text-slate-600 leading-snug">
-                  Tekan tombol nomor di atas (misal: <strong>2. Maryamah</strong> atau <strong>3. Maryanah</strong>) untuk melihat satu keluarga secara rapi & tidak pusing.
+                <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-snug">
+                  Tekan tombol nomor di atas (misal: <strong>2. Maryamah</strong> atau <strong>11. Ahmad Kurniawan</strong>) untuk melihat satu keluarga secara rapi & tidak pusing.
                 </p>
               </div>
             </Panel>
@@ -233,32 +283,32 @@ export default function FamilyTree() {
           <div className="absolute bottom-4 right-4 z-20 flex items-center gap-1.5">
             <button
               onClick={handleJumpToRoots}
-              className="flex items-center gap-1 px-3 py-2 rounded-xl bg-white text-amber-900 text-xs font-black border-2 border-amber-400 shadow-md active:scale-95"
+              className="flex items-center gap-1 px-3 py-2 rounded-xl bg-white dark:bg-slate-900 text-amber-900 dark:text-amber-200 text-xs font-black border-2 border-amber-400 dark:border-amber-600 shadow-md active:scale-95"
               title="Lompat ke Kakek Khairi & Buang"
             >
-              <MapPin className="w-4 h-4 text-amber-600" />
+              <MapPin className="w-4 h-4 text-amber-600 dark:text-amber-400" />
               <span>Ke Moyang</span>
             </button>
 
             <button
               onClick={handleResetView}
-              className="flex items-center gap-1 px-3 py-2 rounded-xl bg-white text-emerald-900 text-xs font-black border-2 border-emerald-400 shadow-md active:scale-95"
+              className="flex items-center gap-1 px-3 py-2 rounded-xl bg-white dark:bg-slate-900 text-emerald-900 dark:text-emerald-200 text-xs font-black border-2 border-emerald-400 dark:border-emerald-600 shadow-md active:scale-95"
               title="Pas-kan bagan di layar"
             >
-              <RotateCcw className="w-3.5 h-3.5 text-emerald-600" />
+              <RotateCcw className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
               <span>Pas Layar</span>
             </button>
 
             <button
               onClick={() => zoomIn({ duration: 300 })}
-              className="p-2 rounded-xl bg-white text-slate-900 border-2 border-slate-300 shadow-md active:scale-95 sm:hidden font-black text-sm"
+              className="p-2 rounded-xl bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 border-2 border-slate-300 dark:border-slate-700 shadow-md active:scale-95 sm:hidden font-black text-sm"
               title="Perbesar Tulisan"
             >
               <ZoomIn className="w-4 h-4" />
             </button>
             <button
               onClick={() => zoomOut({ duration: 300 })}
-              className="p-2 rounded-xl bg-white text-slate-900 border-2 border-slate-300 shadow-md active:scale-95 sm:hidden font-black text-sm"
+              className="p-2 rounded-xl bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 border-2 border-slate-300 dark:border-slate-700 shadow-md active:scale-95 sm:hidden font-black text-sm"
               title="Perkecil"
             >
               <ZoomOut className="w-4 h-4" />
@@ -267,10 +317,18 @@ export default function FamilyTree() {
 
           {/* Legenda Indikator */}
           <Legend />
+
+          {/* Copyright Dicky Achmad Fahrezi */}
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 pointer-events-none hidden md:flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm border border-slate-200 dark:border-slate-800 text-[11px] font-semibold text-slate-500 dark:text-slate-400 shadow-sm">
+            <span>© 2026</span>
+            <strong className="text-slate-800 dark:text-slate-200 font-bold">Dicky Achmad Fahrezi</strong>
+            <span>• Hak Cipta Dilindungi (Pembuat Web)</span>
+          </div>
         </div>
       ) : (
         /* Mode Buku Silsilah - Format Urut Tanpa Geser-Geser Kanvas */
         <FamilyListView
+          searchQuery={searchQuery}
           onSelectPerson={(person) => {
             setSelectedPerson(person);
           }}

@@ -1611,12 +1611,12 @@ export const rawFamilyData = [
     group: 'cross_marriage',
     branch: 'Muchsin-Maryanah',
     parents: ['maryanah', 'muchsin'],
-    spouses: ['asrosi'],
+    spouses: ['asrori'],
   },
   {
-    id: 'asrosi',
-    name: 'Asrosi',
-    rawName: 'Asrosi',
+    id: 'asrori',
+    name: 'Asrori',
+    rawName: 'Asrori',
     gender: 'male',
     generation: 4,
     group: 'cross_marriage',
@@ -1626,8 +1626,8 @@ export const rawFamilyData = [
   },
   {
     id: 'muhammad_andika',
-    name: 'Muhammad Andika Rachmad',
-    rawName: 'Muhammad Andika Rachmad',
+    name: 'Muhammad Andika Rachman',
+    rawName: 'Muhammad Andika Rachman',
     gender: 'male',
     generation: 5,
     group: 'cross_marriage',
@@ -3199,15 +3199,16 @@ export const rawFamilyData = [
     branch: 'Ahmad Nurjaya',
     parents: ['ahmad_nurjaya'],
   },
+  // 11. Ahmad Kurniawan & Eha
   {
     id: 'ahmad_kurniawan',
     name: 'Ahmad Kurniawan',
     rawName: 'Ahmad Kurniawan',
     gender: 'male',
-    generation: 4,
+    generation: 3,
     group: 'cabang_b',
-    branch: 'Ahmad Nurjaya',
-    parents: ['ahmad_nurjaya'],
+    branch: 'Ahmad Kurniawan',
+    parents: ['madji', 'hanifah'],
     spouses: ['eha'],
   },
   {
@@ -3215,9 +3216,9 @@ export const rawFamilyData = [
     name: 'Eha',
     rawName: 'Eha',
     gender: 'female',
-    generation: 4,
+    generation: 3,
     group: 'cabang_b',
-    branch: 'Ahmad Nurjaya',
+    branch: 'Ahmad Kurniawan',
     parents: [],
     spouses: ['ahmad_kurniawan'],
   },
@@ -3226,9 +3227,9 @@ export const rawFamilyData = [
     name: 'Abu Hanifah',
     rawName: 'Abu Hanifah',
     gender: 'male',
-    generation: 5,
+    generation: 4,
     group: 'cabang_b',
-    branch: 'Ahmad Nurjaya',
+    branch: 'Ahmad Kurniawan',
     parents: ['ahmad_kurniawan'],
   },
   {
@@ -3236,9 +3237,9 @@ export const rawFamilyData = [
     name: 'Anak 2',
     rawName: '[Anon2]',
     isPlaceholder: true,
-    generation: 5,
+    generation: 4,
     group: 'cabang_b',
-    branch: 'Ahmad Nurjaya',
+    branch: 'Ahmad Kurniawan',
     parents: ['ahmad_kurniawan'],
   },
   {
@@ -3246,13 +3247,13 @@ export const rawFamilyData = [
     name: 'Anak 3',
     rawName: '[Anon3]',
     isPlaceholder: true,
-    generation: 5,
+    generation: 4,
     group: 'cabang_b',
-    branch: 'Ahmad Nurjaya',
+    branch: 'Ahmad Kurniawan',
     parents: ['ahmad_kurniawan'],
   },
 
-  // 11. Marfuah & Joko
+  // 12. Marfuah & Joko
   {
     id: 'marfuah',
     name: 'Marfuah',
@@ -3276,7 +3277,7 @@ export const rawFamilyData = [
     spouses: ['marfuah'],
   },
 
-  // 12. Nurhasan (Almarhum)
+  // 13. Nurhasan (Almarhum)
   {
     id: 'nurhasan',
     name: 'Nurhasan',
@@ -3290,7 +3291,7 @@ export const rawFamilyData = [
     deceasedLabel: 'Alm.',
   },
 
-  // 13. Fatimah (Almarhumah)
+  // 14. Fatimah (Almarhumah)
   {
     id: 'fatimah',
     name: 'Fatimah',

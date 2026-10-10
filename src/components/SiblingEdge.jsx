@@ -46,8 +46,8 @@ export default function SiblingEdge({
           }}
           className="nodrag nopan"
         >
-          <div className="px-3 py-1 rounded-full text-xs font-black bg-amber-50 text-amber-900 border-2 border-amber-400 flex items-center gap-1.5 shadow-md">
-            <Crown className="w-3.5 h-3.5 text-amber-600" />
+          <div className="px-3 py-1 rounded-full text-xs font-black bg-amber-50 dark:bg-amber-950/80 text-amber-900 dark:text-amber-200 border-2 border-amber-400 dark:border-amber-600 flex items-center gap-1.5 shadow-md">
+            <Crown className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
             <span>👑 Saudara Kandung (Kakak-Beradik)</span>
           </div>
         </div>
