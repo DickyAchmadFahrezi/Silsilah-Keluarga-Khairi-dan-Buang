@@ -17,15 +17,18 @@ export default function Header({
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const searchContainerRef = useRef(null);
 
-  // Cari hasil instan secara global di familyData
+  // Cari hasil instan secara global di familyData (mendukung pencarian haji -> h. & haja -> hj.)
   const searchResults = useMemo(() => {
     const q = (searchQuery || '').trim().toLowerCase();
     if (!q || q.length < 2) return [];
+    const normalizedQ = q.replace(/\bhaji\b/g, 'h.').replace(/\bhaja\b/g, 'hj.').trim();
     return familyData
       .filter((p) => {
         if (p.isPlaceholder) return false;
-        const nameMatch = p.name && p.name.toLowerCase().includes(q);
-        const rawNameMatch = p.rawName && p.rawName.toLowerCase().includes(q);
+        const n = (p.name || '').toLowerCase();
+        const rn = (p.rawName || '').toLowerCase();
+        const nameMatch = n.includes(q) || n.includes(normalizedQ);
+        const rawNameMatch = rn.includes(q) || rn.includes(normalizedQ);
         return nameMatch || rawNameMatch;
       })
       .slice(0, 8); // Tampilkan maksimal 8 saran teratas
@@ -80,7 +83,7 @@ export default function Header({
               </div>
 
               <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-semibold mt-1">
-                Keluarga Besar Haji Madji & Haja Hanifah (14 Anak & Keturunannya)
+                Keluarga Besar H. Madji & HJ. Hanifah (14 Anak & Keturunannya)
               </p>
             </div>
 
@@ -176,7 +179,7 @@ export default function Header({
                       ? 'bg-pink-600 text-white border-pink-700 shadow-pink-600/30'
                       : 'bg-pink-50 dark:bg-pink-950/60 text-pink-700 dark:text-pink-300 border-pink-300 dark:border-pink-800 hover:bg-pink-100 dark:hover:bg-pink-900/50'
                   }`}
-                  title="Sorot alur pernikahan sepupu Haja Hanifah & Haji Madji"
+                  title="Sorot alur pernikahan sepupu HJ. Hanifah & H. Madji"
                 >
                   <Sparkles className="w-4 h-4" />
                   <span>Pernikahan Sepupu</span>

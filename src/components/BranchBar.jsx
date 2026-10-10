@@ -5,7 +5,7 @@ export default function BranchBar({ activeBranch, onSelectBranch }) {
   const mainGroups = [
     { id: 'all', label: '🌟 Semua', short: 'Semua' },
     { id: 'khairi_buang', label: '👑 Khairi & Buang', short: 'Leluhur' },
-    { id: 'silang1', label: '💍 Silang 1: Hanifah & Madji', short: 'Silang 1' },
+    { id: 'silang1', label: '💍 Silang 1: HJ. Hanifah & H. Madji', short: 'Silang 1' },
     { id: 'Muchsin-Maryanah', label: '💍 Silang 2: Muchsin & Maryanah', short: 'Silang 2' },
   ];
 
@@ -22,9 +22,9 @@ export default function BranchBar({ activeBranch, onSelectBranch }) {
   const cabangB = [
     { id: 'Masiah', label: 'B1. Masiah (Almh.)' },
     { id: 'Maryamah', label: 'B2. Maryamah (Almh.)' },
-    { id: 'Manisah', label: 'B4. Manisah (Almh.)' },
+    { id: 'Manisah', label: 'B4. HJ. Manisah (Almh.)' },
     { id: 'Maryati', label: 'B5. Maryati' },
-    { id: 'Jamilah', label: 'B6. Jamilah (Almh.)' },
+    { id: 'Jamilah', label: 'B6. HJ. Jamilah (Almh.)' },
     { id: 'Marjenah', label: 'B7. Marjenah' },
     { id: 'Marhani', label: 'B8. Marhani' },
     { id: 'Ahmad Yani', label: 'B9. Ahmad Yani' },

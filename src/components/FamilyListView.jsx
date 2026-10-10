@@ -5,7 +5,7 @@ import { familyData, getChildren, getSpouses } from '../data';
 export default function FamilyListView({ onSelectPerson, searchQuery = '' }) {
   const [activeTab, setActiveTab] = useState('cabang_b'); // 'cabang_a' atau 'cabang_b'
 
-  // Cabang A (8 Anak Haji Abdul Ghani & Haja Asyuro)
+  // Cabang A (8 Anak H. Abdul Ghani & HJ. Asyuro)
   const cabangAList = [
     { id: 'muchsin', name: 'A1. Muchsin (Alm.)', spouseName: 'Maryanah', deceased: 'Almarhum', note: '💍 Pernikahan Silang 2 dengan Cabang B no. 3' },
     { id: 'nasrullah', name: 'A2. Nasrullah', spouseName: 'Mujenah' },
@@ -17,18 +17,18 @@ export default function FamilyListView({ onSelectPerson, searchQuery = '' }) {
     { id: 'titin_sumarni', name: 'A8. Titin Sumarni', spouseName: 'A. Badawi' },
   ];
 
-  // Cabang B (14 Anak Haji Madji & Haja Hanifah)
+  // Cabang B (14 Anak H. Madji & HJ. Hanifah)
   const cabangBList = [
     { id: 'masiah', name: 'B1. Masiah', deceased: 'Almarhumah' },
     { id: 'maryamah', name: 'B2. Maryamah', spouseName: 'Abdul Rouf', deceased: 'Keduanya Almarhum' },
     { id: 'maryanah', name: 'B3. Maryanah', spouseName: 'Muchsin', deceased: 'Suami Almarhum', note: '💍 Pernikahan Silang 2 dengan Cabang A no. 1' },
-    { id: 'manisah', name: 'B4. Haja Manisah', spouseName: 'Haji Supardi Ahmad', deceased: 'Keduanya Almarhum' },
+    { id: 'manisah', name: 'B4. HJ. Manisah', spouseName: 'H. Supardi Ahmad', deceased: 'Keduanya Almarhum' },
     { id: 'maryati', name: 'B5. Maryati', spouseName: 'Marjuni', deceased: 'Suami Almarhum' },
-    { id: 'jamilah', name: 'B6. Haja Jamilah', spouseName: 'Haji M. Sodri', deceased: 'Keduanya Almarhum' },
+    { id: 'jamilah', name: 'B6. HJ. Jamilah', spouseName: 'H. M. Sodri', deceased: 'Keduanya Almarhum' },
     { id: 'marjenah', name: 'B7. Marjenah', spouseName: 'Agani', deceased: 'Suami Almarhum' },
     { id: 'marhani', name: 'B8. Marhani', spouseName: 'Saman' },
     { id: 'ahmad_yani', name: 'B9. Ahmad Yani', spouseName: 'Nur Janah' },
-    { id: 'ahmad_nurjaya', name: 'B10. Haji Ahmad Nurjaya', spouseName: 'Siti Aisyah', deceased: 'Suami Almarhum' },
+    { id: 'ahmad_nurjaya', name: 'B10. H. Ahmad Nurjaya', spouseName: 'Siti Aisyah', deceased: 'Suami Almarhum' },
     { id: 'ahmad_kurniawan', name: 'B11. Ahmad Kurniawan', spouseName: 'Eha' },
     { id: 'marfuah', name: 'B12. Marfuah', spouseName: 'Joko' },
     { id: 'nurhasan', name: 'B13. Nurhasan', deceased: 'Almarhum' },
@@ -44,20 +44,26 @@ export default function FamilyListView({ onSelectPerson, searchQuery = '' }) {
     }));
   };
 
-  // Helper jika ada pencarian, cek apakah cabang mengandung nama yang dicari
+  // Helper jika ada pencarian, cek apakah cabang mengandung nama yang dicari (mendukung haji -> h. & haja -> hj.)
   const query = searchQuery.trim().toLowerCase();
+  const normalizedQuery = query.replace(/\bhaji\b/g, 'h.').replace(/\bhaja\b/g, 'hj.').trim();
+  const matchStr = (str) => {
+    if (!str) return false;
+    const s = str.toLowerCase();
+    return s.includes(query) || (normalizedQuery && s.includes(normalizedQuery));
+  };
   const branchMatchesSearch = (item) => {
     if (!query) return true;
-    if (item.name.toLowerCase().includes(query)) return true;
-    if (item.spouseName && item.spouseName.toLowerCase().includes(query)) return true;
+    if (matchStr(item.name)) return true;
+    if (item.spouseName && matchStr(item.spouseName)) return true;
     const person = familyData.find((p) => p.id === item.id);
     if (!person) return false;
     const children = getChildren(person.id);
     for (const ch of children) {
-      if (ch.name.toLowerCase().includes(query) || (ch.rawName && ch.rawName.toLowerCase().includes(query))) return true;
+      if (matchStr(ch.name) || matchStr(ch.rawName)) return true;
       const grandChildren = getChildren(ch.id);
       for (const gc of grandChildren) {
-        if (gc.name.toLowerCase().includes(query) || (gc.rawName && gc.rawName.toLowerCase().includes(query))) return true;
+        if (matchStr(gc.name) || matchStr(gc.rawName)) return true;
       }
     }
     return false;
@@ -83,7 +89,7 @@ export default function FamilyListView({ onSelectPerson, searchQuery = '' }) {
               Pernikahan Menyilang 1:
             </p>
             <p>
-              Putri Kakek Khairi (<strong>Haja Hanifah</strong>) menikah dengan putra Kakek Buang (<strong>Haji Madji</strong>) → Lahir 14 anak di <em>Cabang B</em>.
+              Putri Kakek Khairi (<strong>HJ. Hanifah</strong>) menikah dengan putra Kakek Buang (<strong>H. Madji</strong>) → Lahir 14 anak di <em>Cabang B</em>.
             </p>
           </div>
           <div className="p-2.5 rounded-xl bg-indigo-100/70 dark:bg-indigo-950/40 border border-indigo-300 dark:border-indigo-800 space-y-1 text-indigo-950 dark:text-indigo-200 font-medium">
@@ -92,7 +98,7 @@ export default function FamilyListView({ onSelectPerson, searchQuery = '' }) {
               Pernikahan Menyilang 2:
             </p>
             <p>
-              Putra Haji Abdul Ghani di Cabang A (<strong>Muchsin</strong>) menikah dengan putri Haji Madji & Haja Hanifah di Cabang B (<strong>Maryanah</strong>).
+              Putra H. Abdul Ghani di Cabang A (<strong>Muchsin</strong>) menikah dengan putri H. Madji & HJ. Hanifah di Cabang B (<strong>Maryanah</strong>).
             </p>
           </div>
         </div>
@@ -108,7 +114,7 @@ export default function FamilyListView({ onSelectPerson, searchQuery = '' }) {
               : 'text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
           }`}
         >
-          🌿 Cabang B (Haji Madji & Haja Hanifah - 14 Anak)
+          🌿 Cabang B (H. Madji & HJ. Hanifah - 14 Anak)
         </button>
         <button
           onClick={() => setActiveTab('cabang_a')}
@@ -118,7 +124,7 @@ export default function FamilyListView({ onSelectPerson, searchQuery = '' }) {
               : 'text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
           }`}
         >
-          🔷 Cabang A (Haji Abdul Ghani & Haja Asyuro - 8 Anak)
+          🔷 Cabang A (H. Abdul Ghani & HJ. Asyuro - 8 Anak)
         </button>
       </div>
 

@@ -2,7 +2,7 @@
  * Data Silsilah Keluarga Khairi & Buang
  * 
  * Mendukung DUA pernikahan menyilang (Cross-Marriage):
- * 1. Silang 1: Haja Hanifah (anak Khairi) menikah dengan Haji Madji (anak Buang).
+ * 1. Silang 1: HJ. Hanifah (anak Khairi) menikah dengan H. Madji (anak Buang).
  * 2. Silang 2: Muchsin (anak Abdul Ghani - Cabang A) menikah dengan Maryanah (anak Hanifah & Madji - Cabang B).
  * Anak-anak Muchsin & Maryanah hanya didaftarkan satu kali tanpa duplikasi data.
  */
@@ -42,8 +42,8 @@ export const rawFamilyData = [
   // Anak Khairi:
   {
     id: 'abdul_ghani',
-    name: 'Haji Abdul Ghani',
-    rawName: 'Haji Abdul Ghani',
+    name: 'H. Abdul Ghani',
+    rawName: 'H. Abdul Ghani',
     gender: 'male',
     generation: 2,
     parents: ['khairi'],
@@ -55,21 +55,21 @@ export const rawFamilyData = [
   },
   {
     id: 'asyuro',
-    name: 'Haja Asyuro',
-    rawName: 'Haja Asyuro',
+    name: 'HJ. Asyuro',
+    rawName: 'HJ. Asyuro',
     gender: 'female',
     generation: 2,
     parents: [],
     spouses: ['abdul_ghani'],
-    title: 'Istri Haji Abdul Ghani',
+    title: 'Istri H. Abdul Ghani',
     isDeceased: true,
     deceasedLabel: 'Almh.',
     group: 'cabang_a'
   },
   {
     id: 'hanifah',
-    name: 'Haja Hanifah',
-    rawName: 'Haja Hanifah',
+    name: 'HJ. Hanifah',
+    rawName: 'HJ. Hanifah',
     gender: 'female',
     generation: 2,
     parents: ['khairi'],
@@ -83,8 +83,8 @@ export const rawFamilyData = [
   // Anak Buang:
   {
     id: 'madji',
-    name: 'Haji Madji',
-    rawName: 'Haji Madji',
+    name: 'H. Madji',
+    rawName: 'H. Madji',
     gender: 'male',
     generation: 2,
     parents: ['buang'],
@@ -97,7 +97,7 @@ export const rawFamilyData = [
 
   // ========================================================
   // GENERASI 3 & SETERUSNYA - CABANG A
-  // Keturunan Haji Abdul Ghani & Haja Asyuro (8 Anak)
+  // Keturunan H. Abdul Ghani & HJ. Asyuro (8 Anak)
   // ========================================================
 
   // 1. Muchsin (Almarhum) -> Menikah dengan Maryanah (Silang 2)
@@ -1303,7 +1303,7 @@ export const rawFamilyData = [
 
   // ========================================================
   // GENERASI 3 & SETERUSNYA - CABANG B
-  // Keturunan Haji Madji & Haja Hanifah (14 Anak)
+  // Keturunan H. Madji & HJ. Hanifah (14 Anak)
   // ========================================================
 
   // 1. Masiah (Almarhumah)
@@ -1813,11 +1813,11 @@ export const rawFamilyData = [
     parents: ['hany_windari'],
   },
 
-  // 4. Haja Manisah (Alm) & Haji Supardi Ahmad (Alm)
+  // 4. HJ. Manisah (Alm) & H. Supardi Ahmad (Alm)
   {
     id: 'manisah',
-    name: 'Haja Manisah',
-    rawName: 'Haja Manisah (Almarhumah)',
+    name: 'HJ. Manisah',
+    rawName: 'HJ. Manisah (Almarhumah)',
     gender: 'female',
     generation: 3,
     group: 'cabang_b',
@@ -1829,8 +1829,8 @@ export const rawFamilyData = [
   },
   {
     id: 'supardi_ahmad',
-    name: 'Haji Supardi Ahmad',
-    rawName: 'Haji Supardi Ahmad (Almarhum)',
+    name: 'H. Supardi Ahmad',
+    rawName: 'H. Supardi Ahmad (Almarhum)',
     gender: 'male',
     generation: 3,
     group: 'cabang_b',
@@ -2360,11 +2360,11 @@ export const rawFamilyData = [
     parents: ['pipit'],
   },
 
-  // 6. Haja Jamilah (Alm) & Haji M. Sodri (Alm)
+  // 6. HJ. Jamilah (Alm) & H. M. Sodri (Alm)
   {
     id: 'jamilah',
-    name: 'Haja Jamilah',
-    rawName: 'Haja Jamilah (Almarhumah)',
+    name: 'HJ. Jamilah',
+    rawName: 'HJ. Jamilah (Almarhumah)',
     gender: 'female',
     generation: 3,
     group: 'cabang_b',
@@ -2376,8 +2376,8 @@ export const rawFamilyData = [
   },
   {
     id: 'm_sodri',
-    name: 'Haji M. Sodri',
-    rawName: 'Haji M. Sodri (Almarhum)',
+    name: 'H. M. Sodri',
+    rawName: 'H. M. Sodri (Almarhum)',
     gender: 'male',
     generation: 3,
     group: 'cabang_b',
@@ -3090,11 +3090,11 @@ export const rawFamilyData = [
     parents: ['ahmad_yani'],
   },
 
-  // 10. Haji Ahmad Nurjaya (Alm) & Siti Aisyah
+  // 10. H. Ahmad Nurjaya (Alm) & Siti Aisyah
   {
     id: 'ahmad_nurjaya',
-    name: 'Haji Ahmad Nurjaya',
-    rawName: 'Haji Ahmad Nurjaya (Almarhum)',
+    name: 'H. Ahmad Nurjaya',
+    rawName: 'H. Ahmad Nurjaya (Almarhum)',
     gender: 'male',
     generation: 3,
     group: 'cabang_b',
