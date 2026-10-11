@@ -1,6 +1,5 @@
 import React from 'react';
 import { BaseEdge, EdgeLabelRenderer, getSmoothStepPath } from '@xyflow/react';
-import { Crown } from 'lucide-react';
 
 export default function SiblingEdge({
   id,
@@ -46,9 +45,8 @@ export default function SiblingEdge({
           }}
           className="nodrag nopan"
         >
-          <div className="px-3 py-1 rounded-full text-xs font-black bg-amber-50 dark:bg-amber-950/80 text-amber-900 dark:text-amber-200 border-2 border-amber-400 dark:border-amber-600 flex items-center gap-1.5 shadow-md">
-            <Crown className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
-            <span>👑 Saudara Kandung (Kakak-Beradik)</span>
+          <div className="px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-50 dark:bg-amber-950/90 text-amber-900 dark:text-amber-200 border border-amber-300 dark:border-amber-700 shadow-sm">
+            <span>Saudara Kandung</span>
           </div>
         </div>
       </EdgeLabelRenderer>

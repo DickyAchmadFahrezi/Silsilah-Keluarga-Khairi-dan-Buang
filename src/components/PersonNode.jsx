@@ -1,6 +1,5 @@
 import React, { memo } from 'react';
 import { Handle, Position } from '@xyflow/react';
-import { Crown, Heart, ShieldCheck } from 'lucide-react';
 
 const PersonNode = ({ data, selected }) => {
   const {
@@ -125,12 +124,8 @@ const PersonNode = ({ data, selected }) => {
         </span>
 
         {/* Badge Status (Almarhum / Almarhumah / Leluhur) */}
-        <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border flex items-center gap-1 ${badgeBg}`}>
-          {isDeceased && <span>🕊️</span>}
-          {isRoot && <Crown className="w-2.5 h-2.5 text-amber-700 dark:text-amber-400" />}
-          {isSpouse && <Heart className="w-2.5 h-2.5 text-rose-700 dark:text-rose-400" />}
-          {isDirect && <ShieldCheck className="w-2.5 h-2.5 text-emerald-700 dark:text-emerald-400" />}
-          <span>{badgeText}</span>
+        <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${badgeBg}`}>
+          {badgeText}
         </span>
       </div>
 
@@ -161,16 +156,15 @@ const PersonNode = ({ data, selected }) => {
       {/* Keterangan Pasangan / Tombol Info */}
       <div className="mt-2.5 pt-2 border-t border-slate-200/80 dark:border-slate-800 flex items-center justify-between text-[11px]">
         {spouses && spouses.length > 0 ? (
-          <span className="inline-flex items-center gap-1 text-rose-700 dark:text-rose-400 font-bold">
-            <Heart className="w-3 h-3 fill-rose-600 text-rose-600 dark:fill-rose-400 dark:text-rose-400 shrink-0" />
+          <span className="inline-flex items-center text-rose-700 dark:text-rose-400 font-bold">
             <span className="truncate max-w-[120px]">Menikah</span>
           </span>
         ) : (
           <span className="text-slate-500 dark:text-slate-400 text-[10px] font-medium">{genText}</span>
         )}
 
-        <span className="text-[10px] font-bold text-emerald-700 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-950/80 hover:bg-emerald-200 dark:hover:bg-emerald-900 px-2 py-0.5 rounded-md border border-emerald-300 dark:border-emerald-700">
-          Lihat Info 👆
+        <span className="text-[10px] font-bold text-emerald-700 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-950/80 hover:bg-emerald-200 dark:hover:bg-emerald-900 px-2 py-0.5 rounded-md border border-emerald-300 dark:border-emerald-700 transition-colors">
+          Detail
         </span>
       </div>
     </div>
