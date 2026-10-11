@@ -1,12 +1,11 @@
 import React from 'react';
-import { Crown, Sparkles, Heart } from 'lucide-react';
 
 export default function BranchBar({ activeBranch, onSelectBranch }) {
   const mainGroups = [
-    { id: 'all', label: '🌟 Semua', short: 'Semua' },
-    { id: 'khairi_buang', label: '👑 Khairi & Buang', short: 'Leluhur' },
-    { id: 'silang1', label: '💍 Silang 1: HJ. Hanifah & H. Madji', short: 'Silang 1' },
-    { id: 'Muchsin-Maryanah', label: '💍 Silang 2: Muchsin & Maryanah', short: 'Silang 2' },
+    { id: 'all', label: 'Semua', short: 'Semua' },
+    { id: 'khairi_buang', label: 'Khairi & Buang', short: 'Leluhur' },
+    { id: 'silang1', label: 'Silang 1: HJ. Hanifah & H. Madji', short: 'Silang 1' },
+    { id: 'Muchsin-Maryanah', label: 'Silang 2: Muchsin & Maryanah', short: 'Silang 2' },
   ];
 
   const cabangA = [

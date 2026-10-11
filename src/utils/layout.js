@@ -374,10 +374,10 @@ export function generateTreeElements(allData = familyData, options = {}) {
             let label = 'Pernikahan';
             let sublabel = 'Suami - Istri';
             if (isSilang1) {
-              label = '💍 Silang 1: Hanifah & Madji';
+              label = 'Silang 1: Hanifah & Madji';
               sublabel = 'Pernikahan Sepupu (Khairi & Buang)';
             } else if (isSilang2) {
-              label = '💍 Silang 2: Muchsin & Maryanah';
+              label = 'Silang 2: Muchsin & Maryanah';
               sublabel = 'Pernikahan Silang Cabang A & B';
             }
 

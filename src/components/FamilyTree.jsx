@@ -10,7 +10,6 @@ import {
 } from '@xyflow/react';
 import confetti from 'canvas-confetti';
 import { toPng } from 'html-to-image';
-import { Sparkles, ZoomIn, ZoomOut, RotateCcw, MapPin, Info, ArrowDown } from 'lucide-react';
 
 import PersonNode from './PersonNode';
 import MarriageEdge from './MarriageEdge';
@@ -268,12 +267,11 @@ export default function FamilyTree() {
             {/* Panduan Ramah Orang Tua di pojok atas */}
             <Panel position="top-left" className="m-3 pointer-events-none hidden sm:block">
               <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border-2 border-emerald-300 dark:border-emerald-700 text-xs text-slate-800 dark:text-slate-200 max-w-xs space-y-1 shadow-md">
-                <div className="font-black text-emerald-800 dark:text-emerald-400 flex items-center gap-1.5">
-                  <Info className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-                  <span>Cara Mudah Melihat:</span>
+                <div className="font-bold text-emerald-800 dark:text-emerald-400">
+                  <span>Cara Melihat:</span>
                 </div>
                 <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-snug">
-                  Tekan tombol nomor di atas (misal: <strong>2. Maryamah</strong> atau <strong>11. Ahmad Kurniawan</strong>) untuk melihat satu keluarga secara rapi & tidak pusing.
+                  Tekan pilihan keluarga di bilah atas untuk melihat satu keluarga secara rapi dan fokus.
                 </p>
               </div>
             </Panel>
@@ -283,35 +281,33 @@ export default function FamilyTree() {
           <div className="absolute bottom-4 right-4 z-20 flex items-center gap-1.5">
             <button
               onClick={handleJumpToRoots}
-              className="flex items-center gap-1 px-3 py-2 rounded-xl bg-white dark:bg-slate-900 text-amber-900 dark:text-amber-200 text-xs font-black border-2 border-amber-400 dark:border-amber-600 shadow-md active:scale-95"
+              className="flex items-center px-3 py-2 rounded-xl bg-white dark:bg-slate-900 text-amber-900 dark:text-amber-200 text-xs font-bold border-2 border-amber-400 dark:border-amber-600 shadow-md active:scale-95"
               title="Lompat ke Kakek Khairi & Buang"
             >
-              <MapPin className="w-4 h-4 text-amber-600 dark:text-amber-400" />
               <span>Ke Moyang</span>
             </button>
 
             <button
               onClick={handleResetView}
-              className="flex items-center gap-1 px-3 py-2 rounded-xl bg-white dark:bg-slate-900 text-emerald-900 dark:text-emerald-200 text-xs font-black border-2 border-emerald-400 dark:border-emerald-600 shadow-md active:scale-95"
+              className="flex items-center px-3 py-2 rounded-xl bg-white dark:bg-slate-900 text-emerald-900 dark:text-emerald-200 text-xs font-bold border-2 border-emerald-400 dark:border-emerald-600 shadow-md active:scale-95"
               title="Pas-kan bagan di layar"
             >
-              <RotateCcw className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
               <span>Pas Layar</span>
             </button>
 
             <button
               onClick={() => zoomIn({ duration: 300 })}
-              className="p-2 rounded-xl bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 border-2 border-slate-300 dark:border-slate-700 shadow-md active:scale-95 sm:hidden font-black text-sm"
-              title="Perbesar Tulisan"
+              className="w-9 h-9 flex items-center justify-center rounded-xl bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 border-2 border-slate-300 dark:border-slate-700 shadow-md active:scale-95 sm:hidden font-bold text-base leading-none"
+              title="Perbesar Tampilan"
             >
-              <ZoomIn className="w-4 h-4" />
+              +
             </button>
             <button
               onClick={() => zoomOut({ duration: 300 })}
-              className="p-2 rounded-xl bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 border-2 border-slate-300 dark:border-slate-700 shadow-md active:scale-95 sm:hidden font-black text-sm"
-              title="Perkecil"
+              className="w-9 h-9 flex items-center justify-center rounded-xl bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 border-2 border-slate-300 dark:border-slate-700 shadow-md active:scale-95 sm:hidden font-bold text-base leading-none"
+              title="Perkecil Tampilan"
             >
-              <ZoomOut className="w-4 h-4" />
+              &minus;
             </button>
           </div>
 

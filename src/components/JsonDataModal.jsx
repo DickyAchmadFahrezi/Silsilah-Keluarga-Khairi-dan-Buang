@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { X, Copy, Check, Code, FileText, Info } from 'lucide-react';
 import { familyData } from '../data';
 
 export default function JsonDataModal({ onClose }) {
@@ -21,38 +20,32 @@ export default function JsonDataModal({ onClose }) {
       >
         {/* Header */}
         <div className="p-5 border-b border-slate-800 flex items-center justify-between bg-slate-850/80">
-          <div className="flex items-center gap-2.5">
-            <div className="p-2 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-              <Code className="w-5 h-5" />
-            </div>
-            <div>
-              <h3 className="text-lg font-bold text-white">Struktur Data Silsilah (JSON)</h3>
-              <p className="text-xs text-slate-400">Berkas sumber: <code className="text-emerald-400">src/data.js</code></p>
-            </div>
+          <div>
+            <h3 className="text-lg font-bold text-white">Struktur Data Silsilah (JSON)</h3>
+            <p className="text-xs text-slate-400">Berkas sumber: <code className="text-emerald-400">src/data.js</code></p>
           </div>
 
           <div className="flex items-center gap-2">
             <button
               onClick={handleCopy}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold shadow transition-all"
+              className="px-3.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold shadow transition-all"
             >
-              {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
               {copied ? 'Tersalin!' : 'Salin JSON'}
             </button>
             <button
               onClick={onClose}
-              className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+              className="w-8 h-8 flex items-center justify-center rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors text-lg font-bold leading-none"
+              aria-label="Tutup"
             >
-              <X className="w-5 h-5" />
+              &times;
             </button>
           </div>
         </div>
 
         {/* Info Banner */}
-        <div className="px-5 py-3 bg-amber-500/10 border-b border-amber-500/20 flex items-center gap-2 text-xs text-amber-300">
-          <Info className="w-4 h-4 shrink-0 text-amber-400" />
+        <div className="px-5 py-3 bg-amber-500/10 border-b border-amber-500/20 text-xs text-amber-300">
           <span>
-            Data ini tanpa database! Anda dapat memodifikasi array di <code>src/data.js</code> kapan saja. Relasi sepupu antara Hanifa & Madji terdeteksi otomatis.
+            Data ini tanpa database. Anda dapat memodifikasi array di <code>src/data.js</code> kapan saja. Relasi sepupu antara Hanifah & Madji terdeteksi otomatis.
           </span>
         </div>
 

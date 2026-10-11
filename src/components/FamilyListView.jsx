@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Crown, Heart, ChevronDown, ChevronRight, Users, Sparkles } from 'lucide-react';
 import { familyData, getChildren, getSpouses } from '../data';
 
 export default function FamilyListView({ onSelectPerson, searchQuery = '' }) {
@@ -7,7 +6,7 @@ export default function FamilyListView({ onSelectPerson, searchQuery = '' }) {
 
   // Cabang A (8 Anak H. Abdul Ghani & HJ. Asyuro)
   const cabangAList = [
-    { id: 'muchsin', name: 'A1. Muchsin (Alm.)', spouseName: 'Maryanah', deceased: 'Almarhum', note: '💍 Pernikahan Silang 2 dengan Cabang B no. 3' },
+    { id: 'muchsin', name: 'A1. Muchsin (Alm.)', spouseName: 'Maryanah', deceased: 'Almarhum', note: 'Pernikahan Silang 2 dengan Cabang B no. 3' },
     { id: 'nasrullah', name: 'A2. Nasrullah', spouseName: 'Mujenah' },
     { id: 'nur_laila', name: 'A3. Nur Laila', spouseName: 'Nur Bahri' },
     { id: 'zainul_abidin', name: 'A4. Zainul Abidin', spouseName: 'Suryati' },
@@ -21,7 +20,7 @@ export default function FamilyListView({ onSelectPerson, searchQuery = '' }) {
   const cabangBList = [
     { id: 'masiah', name: 'B1. Masiah', deceased: 'Almarhumah' },
     { id: 'maryamah', name: 'B2. Maryamah', spouseName: 'Abdul Rouf', deceased: 'Keduanya Almarhum' },
-    { id: 'maryanah', name: 'B3. Maryanah', spouseName: 'Muchsin', deceased: 'Suami Almarhum', note: '💍 Pernikahan Silang 2 dengan Cabang A no. 1' },
+    { id: 'maryanah', name: 'B3. Maryanah', spouseName: 'Muchsin', deceased: 'Suami Almarhum', note: 'Pernikahan Silang 2 dengan Cabang A no. 1' },
     { id: 'manisah', name: 'B4. HJ. Manisah', spouseName: 'H. Supardi Ahmad', deceased: 'Keduanya Almarhum' },
     { id: 'maryati', name: 'B5. Maryati', spouseName: 'Marjuni', deceased: 'Suami Almarhum' },
     { id: 'jamilah', name: 'B6. HJ. Jamilah', spouseName: 'H. M. Sodri', deceased: 'Keduanya Almarhum' },
@@ -75,8 +74,7 @@ export default function FamilyListView({ onSelectPerson, searchQuery = '' }) {
     <div className="w-full h-full overflow-y-auto bg-slate-50 dark:bg-slate-950 px-3 sm:px-6 py-6 pb-24 text-slate-900 dark:text-slate-100 max-w-4xl mx-auto space-y-6 select-none transition-colors">
       {/* Kartu Penjelasan Silsilah & 2 Pernikahan Menyilang */}
       <div className="p-4 sm:p-6 rounded-2xl bg-amber-50/90 dark:bg-amber-950/30 border-2 border-amber-300 dark:border-amber-700 shadow-md">
-        <h2 className="text-base sm:text-lg font-black text-amber-950 dark:text-amber-200 flex items-center gap-2 mb-2">
-          <Crown className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0" />
+        <h2 className="text-base sm:text-lg font-black text-amber-950 dark:text-amber-200 mb-2">
           Akar Silsilah & Dua Pernikahan Menyilang
         </h2>
         <div className="text-xs sm:text-sm text-slate-800 dark:text-slate-200 space-y-2.5 leading-relaxed">
@@ -84,17 +82,15 @@ export default function FamilyListView({ onSelectPerson, searchQuery = '' }) {
             • <strong className="text-amber-900 dark:text-amber-300">Generasi 1 (Kakek Moyang):</strong> Kakek <strong className="text-amber-950 dark:text-amber-100 underline decoration-amber-400">Khairi</strong> dan Kakek <strong className="text-amber-950 dark:text-amber-100 underline decoration-amber-400">Buang</strong> adalah <em>kakak-beradik kandung</em>.
           </p>
           <div className="p-2.5 rounded-xl bg-pink-100/70 dark:bg-pink-950/40 border border-pink-300 dark:border-pink-800 space-y-1 text-pink-950 dark:text-pink-200 font-medium">
-            <p className="font-bold text-pink-900 dark:text-pink-300 flex items-center gap-1">
-              <Sparkles className="w-4 h-4 text-pink-600 dark:text-pink-400" />
+            <p className="font-bold text-pink-900 dark:text-pink-300">
               Pernikahan Menyilang 1:
             </p>
             <p>
-              Putri Kakek Khairi (<strong>HJ. Hanifah</strong>) menikah dengan putra Kakek Buang (<strong>H. Madji</strong>) → Lahir 14 anak di <em>Cabang B</em>.
+              Putri Kakek Khairi (<strong>HJ. Hanifah</strong>) menikah dengan putra Kakek Buang (<strong>H. Madji</strong>) &rarr; Lahir 14 anak di <em>Cabang B</em>.
             </p>
           </div>
           <div className="p-2.5 rounded-xl bg-indigo-100/70 dark:bg-indigo-950/40 border border-indigo-300 dark:border-indigo-800 space-y-1 text-indigo-950 dark:text-indigo-200 font-medium">
-            <p className="font-bold text-indigo-900 dark:text-indigo-300 flex items-center gap-1">
-              <Sparkles className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
+            <p className="font-bold text-indigo-900 dark:text-indigo-300">
               Pernikahan Menyilang 2:
             </p>
             <p>
@@ -114,7 +110,7 @@ export default function FamilyListView({ onSelectPerson, searchQuery = '' }) {
               : 'text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
           }`}
         >
-          🌿 Cabang B (H. Madji & HJ. Hanifah - 14 Anak)
+          Cabang B (H. Madji & HJ. Hanifah - 14 Anak)
         </button>
         <button
           onClick={() => setActiveTab('cabang_a')}
@@ -124,7 +120,7 @@ export default function FamilyListView({ onSelectPerson, searchQuery = '' }) {
               : 'text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
           }`}
         >
-          🔷 Cabang A (H. Abdul Ghani & HJ. Asyuro - 8 Anak)
+          Cabang A (H. Abdul Ghani & HJ. Asyuro - 8 Anak)
         </button>
       </div>
 
@@ -170,7 +166,7 @@ export default function FamilyListView({ onSelectPerson, searchQuery = '' }) {
                       </span>
                       {item.deceased && (
                         <span className="px-2 py-0.5 text-[10px] font-bold rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-300 border border-zinc-300 dark:border-zinc-700">
-                          🕊️ {item.deceased}
+                          {item.deceased}
                         </span>
                       )}
                     </div>
@@ -192,9 +188,9 @@ export default function FamilyListView({ onSelectPerson, searchQuery = '' }) {
                   </div>
                 </div>
 
-                <div className="p-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 shrink-0">
-                  {isOpen ? <ChevronDown className="w-5 h-5" /> : <ChevronRight className="w-5 h-5" />}
-                </div>
+                <span className="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 shrink-0">
+                  {isOpen ? 'Tutup' : 'Buka'}
+                </span>
               </button>
 
               {/* Isi Keturunan saat kartu dibuka */}
@@ -221,14 +217,13 @@ export default function FamilyListView({ onSelectPerson, searchQuery = '' }) {
                                 <div className="font-extrabold text-xs sm:text-sm text-slate-900 dark:text-slate-100 flex items-center gap-1.5">
                                   <span>{idx + 1}. {child.name}</span>
                                   {child.isDeceased && (
-                                    <span className="text-[10px] text-zinc-600 dark:text-zinc-400 font-bold">🕊️ (Alm.)</span>
+                                    <span className="text-[10px] text-zinc-600 dark:text-zinc-400 font-bold">(Alm.)</span>
                                   )}
                                 </div>
                               </div>
 
                               {childSpouses.length > 0 && (
-                                <div className="text-[11px] text-rose-700 dark:text-rose-400 font-semibold mt-1 flex items-center gap-1">
-                                  <Heart className="w-3 h-3 fill-rose-500 text-rose-500 shrink-0" />
+                                <div className="text-[11px] text-rose-700 dark:text-rose-400 font-semibold mt-1">
                                   <span>Pasangan: {childSpouses.map(s => s.name).join(', ')}</span>
                                 </div>
                               )}
@@ -271,7 +266,7 @@ export default function FamilyListView({ onSelectPerson, searchQuery = '' }) {
           © 2026 Dicky Achmad Fahrezi (Pembuat Web) • Hak Cipta Dilindungi
         </p>
         <p className="text-[11px] text-slate-500 dark:text-slate-500">
-          Silsilah Keluarga Besar Khairi & Buang • Dibuat dengan cinta untuk seluruh keluarga
+          Silsilah Keluarga Besar Khairi & Buang • Dibuat untuk seluruh keluarga
         </p>
       </footer>
     </div>
